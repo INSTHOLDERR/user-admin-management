@@ -1,133 +1,295 @@
-/* Reset and base styles */
-body {
+/* ============================
+   RESET + GLOBAL STYLES
+============================ */
+* {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-  background-color: #f8f9fa;
-  color: #212529;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-/* Main container */
+body {
+  font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background: #f5f7fa;
+  color: #222;
+}
+
+/* ============================
+   LAYOUT WRAPPER
+============================ */
 .admin-container {
   display: flex;
   min-height: 100vh;
 }
 
-/* Sidebar */
-.sidebar {
-  width: 220px;
-  background-color: #e9ecef;
-  padding: 20px;
-  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.05);
+/* ============================
+   SIDEBAR NAVIGATION
+============================ */
+.admin-navbar {
+  width: 240px;
+  background: #ffffff;
+  padding: 28px 18px;
+  border-right: 1px solid #e3e6ea;
+  box-shadow: 3px 0 15px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
 }
 
-.logo {
-  font-size: 20px;
-  font-weight: bold;
-  margin-bottom: 30px;
+.admin-logo {
+  font-size: 22px;
+  font-weight: 700;
   color: #333;
+  text-align: center;
+  margin-bottom: 34px;
 }
 
-/* Navigation links */
-.nav-links a {
-  display: block;
-  color: #495057;
+.admin-nav-links {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.admin-nav-item {
+  padding: 12px 14px;
+  background: #f2f4f7;
+  border-radius: 8px;
+  font-size: 15px;
+  color: #333;
   text-decoration: none;
-  margin-bottom: 15px;
-  font-size: 16px;
-  transition: color 0.2s;
+  cursor: pointer;
+  transition: 0.25s;
+  display: block;
 }
 
-.nav-links a:hover {
-  color: #007bff;
+.admin-nav-item:hover {
+  background: #e3edff;
+  color: #0b63ff;
 }
 
-.logout {
-  color: #dc3545;
+.admin-nav-item.active {
+  background: #cfe1ff;
+  color: #0b63ff;
+  font-weight: 600;
 }
 
-/* Main content */
+.logout-btn {
+  border: none;
+  text-align: left;
+  background: #ffe8e8;
+  color: #d20000;
+}
+
+.logout-btn:hover {
+  background: #ffd1d1;
+}
+
+/* ============================
+   MAIN CONTENT
+============================ */
 .dashboard-main {
-  flex-grow: 1;
-  padding: 40px;
+  flex: 1;
+  padding: 40px 50px;
 }
 
 .dashboard-main h1 {
-  margin-bottom: 20px;
+  font-size: 28px;
+  margin-bottom: 22px;
+  color: #333;
 }
 
-/* User Table */
+/* ============================
+   USERS TABLE WRAPPER
+============================ */
 .user-table-wrapper {
-  background-color: #ffffff;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+  background: #ffffff;
+  padding: 22px 26px;
+  border-radius: 12px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.06);
 }
 
+.user-table-wrapper h2 {
+  margin-bottom: 14px;
+  font-size: 20px;
+  color: #222;
+}
+
+.search-input {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 6px;
+  border: 1px solid #cdd2d9;
+  margin-bottom: 16px;
+  font-size: 15px;
+  outline: none;
+  transition: 0.2s;
+}
+
+.search-input:focus {
+  border-color: #0b63ff;
+  box-shadow: 0 0 4px rgba(11, 99, 255, 0.2);
+}
+
+/* ============================
+   TABLE STYLING
+============================ */
 .user-table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 10px;
 }
 
 .user-table th,
 .user-table td {
-  padding: 12px;
+  padding: 14px 8px;
   text-align: left;
-  border-bottom: 1px solid #dee2e6;
+  border-bottom: 1px solid #eceff3;
+  font-size: 15px;
 }
 
 .user-table th {
-  background-color: #f1f3f5;
+  background: #f2f5f8;
   font-weight: 600;
+  color: #444;
 }
 
+/* PROFILE IMAGE */
 .profile-img {
-  width: 40px;
-  height: 40px;
+  width: 42px;
+  height: 42px;
   border-radius: 50%;
   object-fit: cover;
 }
 
-/* Buttons */
+/* ============================
+   ACTION BUTTONS
+============================ */
 .edit-btn,
 .delete-btn {
-  padding: 6px 12px;
+  padding: 7px 12px;
   border: none;
-  border-radius: 4px;
+  border-radius: 6px;
   font-size: 14px;
-  margin-right: 5px;
   cursor: pointer;
   text-decoration: none;
-  display: inline-block;
+  margin-right: 6px;
+  transition: 0.2s;
 }
 
 .edit-btn {
-  background-color: #e0f0ff;
+  background: #e5f1ff;
   color: #007bff;
 }
 
-.delete-btn {
-  background-color: #ffe0e0;
-  color: #dc3545;
+.edit-btn:hover {
+  background: #cfe4ff;
 }
 
-.edit-btn:hover {
-  background-color: #cce4ff;
+.delete-btn {
+  background: #ffe1e1;
+  color: #d10000;
 }
 
 .delete-btn:hover {
-  background-color: #ffc2c2;
+  background: #ffc2c2;
 }
 
-/* Responsive (optional) */
+/* ============================
+   LOGOUT CONFIRM MODAL
+============================ */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  backdrop-filter: blur(6px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: fadeIn 0.25s ease;
+  z-index: 1000;
+}
+
+.confirm-modal {
+  width: 330px;
+  background: #ffffff;
+  padding: 28px 30px;
+  border-radius: 14px;
+  text-align: center;
+  animation: scaleIn 0.25s ease;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+}
+
+.confirm-modal h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.confirm-modal p {
+  font-size: 15px;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.cancel-btn,
+.logout-confirm-btn {
+  flex: 1;
+  padding: 10px;
+  border-radius: 6px;
+  font-size: 15px;
+  cursor: pointer;
+  border: none;
+}
+
+.cancel-btn {
+  background: #dcdcdc;
+}
+
+.cancel-btn:hover {
+  background: #c5c5c5;
+}
+
+.logout-confirm-btn {
+  background: #ff4d4d;
+  color: #fff;
+}
+
+.logout-confirm-btn:hover {
+  background: #d70000;
+}
+
+/* ============================
+   ANIMATIONS
+============================ */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from { transform: scale(0.85); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+/* ============================
+   RESPONSIVE
+============================ */
 @media (max-width: 768px) {
   .admin-container {
     flex-direction: column;
   }
 
-  .sidebar {
+  .admin-navbar {
     width: 100%;
-    box-shadow: none;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 16px;
+  }
+
+  .admin-nav-links {
+    flex-direction: row;
   }
 
   .dashboard-main {

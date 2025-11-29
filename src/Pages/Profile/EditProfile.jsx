@@ -1,4 +1,4 @@
-import  { useState } from 'react';
+import { useState } from 'react';
 import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
 import { loginSuccess } from '../../Slice/userSlice';
@@ -9,8 +9,11 @@ import './EditProfile.css';
 
 const EditProfile = () => {
   const { userInfo } = useSelector((state) => state.user);
+
   const [username, setUsername] = useState(userInfo.username);
   const [profilePic, setProfilePic] = useState(userInfo.profilePic || '');
+  const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false); // 👁️ toggle
   const [uploading, setUploading] = useState(false);
 
   const dispatch = useDispatch();
@@ -29,7 +32,6 @@ const EditProfile = () => {
         'https://api.cloudinary.com/v1_1/doyjmp5ie/image/upload',
         formData
       );
-
       setProfilePic(data.secure_url);
     } catch (err) {
       alert('Image upload failed');
@@ -39,17 +41,25 @@ const EditProfile = () => {
 
   const Update = async (e) => {
     e.preventDefault();
+
     try {
       const config = {
         headers: {
           Authorization: `Bearer ${userInfo.token}`,
         },
       };
-      const { data } = await API.put(
-        '/users/profile',
-        { username, profilePic },
-        config
-      );
+
+      // Only send password if user entered it
+      const updateData = {
+        username,
+        profilePic,
+      };
+
+      if (password.trim() !== "") {
+        updateData.password = password;
+      }
+
+      const { data } = await API.put('/users/profile', updateData, config);
 
       dispatch(loginSuccess(data));
       localStorage.setItem('userInfo', JSON.stringify(data));
@@ -68,6 +78,8 @@ const EditProfile = () => {
           <h2 className="edit-profile-title">Edit Profile</h2>
           
           <form className="edit-profile-form" onSubmit={Update}>
+            
+            {/* Username */}
             <div className="input-group">
               <input
                 className="edit-profile-input"
@@ -79,6 +91,7 @@ const EditProfile = () => {
               />
             </div>
 
+            {/* Email - disabled */}
             <div className="input-group">
               <input
                 className="edit-profile-input disabled"
@@ -88,6 +101,25 @@ const EditProfile = () => {
               />
             </div>
 
+            {/* Change Password (optional) */}
+            <div className="input-wrapper">
+              <input
+                className="edit-profile-input"
+                type={showPassword ? "text" : "password"}
+                placeholder="New Password (optional)"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+
+              <span
+                className="eye-icon"
+                onClick={() => setShowPassword(!showPassword)}
+              >
+                {showPassword ? "🙈" : "👁️"}
+              </span>
+            </div>
+
+            {/* Upload Picture */}
             <div className="file-upload-section">
               <label className="file-upload-label">
                 <input
@@ -111,6 +143,7 @@ const EditProfile = () => {
             <button className="save-changes-button" type="submit">
               Save Changes
             </button>
+
           </form>
         </div>
       </div>

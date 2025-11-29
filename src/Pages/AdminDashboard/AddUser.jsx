@@ -28,6 +28,8 @@ const AddUser = () => {
       setProfilePic(data.secure_url);
     } catch (err) {
       toast.error("Image upload failed");
+      console.log(err);
+      
     }
     setUploading(false);
   };

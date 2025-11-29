@@ -1,17 +1,24 @@
-const express = require('express');
+import express from "express";
+import { adminAuth } from "../middleware/adminMiddleware.js";
+import {
+  adminLogin,
+  getAllUsers,
+  addUser,
+  editUser,
+  getUser,
+  deleteUser,
+} from "../Controllers/adminController.js";
+
 const router = express.Router();
-const { adminAuth } = require('../middleware/adminMiddleware');
 
-const { adminLogin, getAllUsers, addUser, editUser,getUser, deleteUser } = require('../Controllers/adminController')
+// Admin Login
+router.post("/login", adminLogin);
 
-// login
-router.post('/login', adminLogin);
+// Admin User Management
+router.post("/users", adminAuth, addUser);
+router.get("/users", adminAuth, getAllUsers);
+router.get("/users/:id", adminAuth, getUser);
+router.put("/users/:id", adminAuth, editUser);
+router.delete("/users/:id", adminAuth, deleteUser);
 
-router.post('/users',adminAuth, addUser);
-router.get('/users',adminAuth,getAllUsers);
-router.delete('/users/:id',adminAuth, deleteUser);
-router.put('/users/:id',adminAuth, editUser);
-router.get('/users/:id',adminAuth,getUser)
-
-
-module.exports = router;
+export default router;

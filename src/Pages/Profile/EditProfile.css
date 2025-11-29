@@ -112,3 +112,25 @@
 .save-changes-button:hover {
   background-color: #5e2bbd;
 }
+
+
+.input-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.eye-icon {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.edit-profile-input {
+  padding: 0.75rem 2.8rem 0.75rem 1rem; /* space for eye icon */
+  margin-bottom: 1rem;
+  width: 100%;
+  box-sizing: border-box;
+}

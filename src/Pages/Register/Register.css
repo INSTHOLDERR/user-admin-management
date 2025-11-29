@@ -7,6 +7,8 @@
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+
+
 .register-container {
   background-color: #fff;
   padding: 2.5rem 3rem;
@@ -68,4 +70,76 @@
 .register-form p:hover {
   text-decoration: underline;
   cursor: pointer;
+}
+
+
+.tick {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 20px;
+}
+
+.tick.green {
+  color: green;
+}
+
+.tick.red {
+  color: red;
+}
+.input-wrapper {
+  position: relative;
+  width: 100%;
+}
+.register-input {
+  padding: 0.75rem 2.5rem 0.75rem 1rem;  /* right padding increased */
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
+  transition: border-color 0.3s ease;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+
+.input-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+/* Tick - already added */
+.tick {
+  position: absolute;
+  right: 40px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 20px;
+  pointer-events: none;
+}
+
+.tick.green { color: green; }
+.tick.red { color: red; }
+
+/* 👁️ Eye icon styling */
+.eye-icon {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 20px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.register-input {
+  padding: 0.75rem 2.8rem 0.75rem 1rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
+  transition: border-color 0.3s ease;
+  width: 100%;
+  box-sizing: border-box;
 }

@@ -9,7 +9,8 @@ import { toast } from 'react-toastify';
 const Home = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { userInfo } = useSelector((state) => state.user);
+
+  const { userInfo,random } = useSelector((state) => state.user);
 
   const Logout = () => {
     dispatch(logout());
@@ -21,6 +22,7 @@ const Home = () => {
   return (
     <>
       <Navbar/>
+      <h1>{random}</h1>
       <div className="home-page">
         <div className="home-container">
           <div className="welcome-section">
